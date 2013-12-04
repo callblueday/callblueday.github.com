@@ -1,3 +1,3 @@
 callblueday.github.com
 ======================
-My page
+github.com/callblueday

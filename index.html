@@ -1,35 +1,115 @@
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>callblueday.github.com by callblueday</title>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>night-callblueday</title>
+</head>
+<body>
+  <audio src="http://www.kuwo.cn/yinyue/219764/"></audio>
+  <script src="lib/d3.v3.min.js"></script>
+  <style>
+    body {
+      background:black;
+      color: #fff;
+      text-align: center;
+    }
+  </style>
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
-        <h1>callblueday.github.com</h1>
-        <p></p>
+  <script>
+  var dataset = [];
+  for (var i = 0; i < 100; i++) {
+    var item = [];
+    var x = Math.floor(Math.random() * 480); 
+    var y = Math.floor(Math.random() * 120);
+    item.push(x); 
+    item.push(y); 
+    dataset.push(item);
+  }
+
+  var padding = 30;
+  var w = document.body.offsetWidth;
+  var h = 624;
+  // var h = window.screen.height;
+  // var h = document.body.height; // the circle are on the top
+
+  var svg = d3.select("body").append("svg").attr("width", w).attr("height", h);  
+
+  var xMax = d3.max(dataset, function(d) {
+    return d[0];
+  });
+  var yMax = d3.max(dataset, function(d) {
+    return d[1];
+  }); 
 
 
-        <p class="view"><a href="https://github.com/callblueday">View My GitHub Profile</a></p>
+  var xScale = d3.scale.linear()
+                      .domain([0,xMax])
+                      .range([padding,w-padding]);
+  var yScale = d3.scale.linear()
+                      .domain([0,yMax])
+                      .range([h-padding, padding]);
 
-      </header>
-      <section>
-        <p>The main page</p>
-      </section>
-      <footer>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
-    </div>
-    <script src="javascripts/scale.fix.js"></script>
-    
+  var rScale = d3.scale.linear()
+                      .domain([0,yMax])
+                      .range([25, 5]);
+                      // .range([5, 25]);
+
+  svg.selectAll("circle")
+      .data(dataset)
+      .enter()
+      .append("circle")
+        .attr("cx",function(d) {
+          return xScale(d[0]);
+        })
+        .attr("cy",function(d) {
+          return yScale(d[1]);
+        })
+        .attr("r", function(d) {
+          return rScale(d[1]);
+        })
+        .attr("fill", function(d, i) {
+          return "rgb(0,200," + i*10 + ")";
+        })
+      .text(function(d, i) {
+        return i;
+      });
+
+      var i = 0;
+      var tiem1 = setInterval(function() {
+        i++;
+
+        // var numValues = dataset.length; //Count original length of dataset
+        // dataset = []; //Initialize empty array
+        // for (var j = 0; j < numValues; j++) {
+        //   //Loop numValues times
+        //   var newNumber = Math.floor(Math.random() * 25); //New random integer (0-24)
+        //   dataset.push(newNumber); //Add new number to array
+        // }
+
+        svg.selectAll("circle")
+           .transition()
+           .duration(6000)
+           .ease("linear")
+        
+            .attr("cx",function(d) {
+              // return xScale(d[0]);
+              // return xScale(d[0]) + w*Math.random();
+              return w*Math.random();
+            })
+            .attr("cy",function(d) {
+              // return yScale(d[1]);
+              // return yScale(d[1]) + h*Math.random();
+              return h*Math.random();
+            })
+            // .attr("r", function(d) {
+            //   return rScale(d[1]);
+            // })
+            .attr("fill", function(d) {
+              return "rgb(" + 255*Math.random() + "," + 255*Math.random() + "," + 255*Math.random() + ")";
+            });
+      }, 6000)
+
+  </script>
   </body>
 </html>
