@@ -4,9 +4,19 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>night-callblueday</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <audio src="http://www.kuwo.cn/yinyue/219764/"></audio>
+  <div class="main-page">
+    <ul class="website-list">
+      <li>
+        <span class="date">Day12-06</span>
+        <a href="#" class="sitename" target="_blank">Sayyourname</a>
+      </li>
+    </ul>
+  </div>
+
   <script src="lib/d3.v3.min.js"></script>
   <style>
     body {
@@ -53,7 +63,6 @@
   var rScale = d3.scale.linear()
                       .domain([0,yMax])
                       .range([25, 5]);
-                      // .range([5, 25]);
 
   svg.selectAll("circle")
       .data(dataset)
@@ -78,15 +87,6 @@
       var i = 0;
       var tiem1 = setInterval(function() {
         i++;
-
-        // var numValues = dataset.length; //Count original length of dataset
-        // dataset = []; //Initialize empty array
-        // for (var j = 0; j < numValues; j++) {
-        //   //Loop numValues times
-        //   var newNumber = Math.floor(Math.random() * 25); //New random integer (0-24)
-        //   dataset.push(newNumber); //Add new number to array
-        // }
-
         svg.selectAll("circle")
            .transition()
            .duration(6000)

@@ -1,0 +1,35 @@
+.main-page {
+  text-align: left;
+  width: 960px;
+  height: 500px;
+  background: #ddd;
+  opacity: 0.3;
+  position: absolute;
+  left: 50%;
+  margin-left: -480px;
+  -ms-border-radius:10px;
+  -webkit-border-radius:10px;
+  border-radius:10px;
+  overflow: auto;
+  top: 20px;
+}
+
+.website-list {
+  opacity: 1.0;
+  color: black;
+  font-size: 18px;
+}
+
+.website-list li {
+  height: 30px;
+}
+
+.date {
+  font-style: italic;
+}
+
+a.sitename {
+  margin-left: 15px;
+  font-weight: bold;
+  text-decoration: none;
+}
