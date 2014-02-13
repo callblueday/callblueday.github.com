@@ -3,24 +3,18 @@
 <meta charset="utf-8">
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>night</title>
-  <link rel="stylesheet" href="css/loveday.css">
+  <title>night-callblueday</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <audio src="http://www.kuwo.cn/yinyue/219764/"></audio>
-  <span class="world-begin">5</span>
-  <div class="love-life">
-    <div class="our-color">
-      <h3 class="to-my-love">宝贝，情人节快乐</h3>
-      <p>有人说，如果能在七秒中里爱上一个人，那就叫一见钟情。七秒钟前的世界，静止、孤寂，带着一个人
-      的冰冷默默的等待着，当真的出现那个可以温暖，解冻生命的人时，一切是终止，又是新的开始...</p>
-      <p>我不知道我们是否是相遇在那七秒的时间里，那七秒前的世界，对于我已足够漫长，我知道的是，因为你，
-      我七秒后的世界里开始复苏，一切不再冰冷，僵硬，自此温度和色彩不会停止。</p>
-      <div class="go-right-ok">
-        <p class="me">Ban</p>
-        <p class="time">2014-02-14</p>
-      </div>
-    </div>
+  <div class="main-page">
+    <ul class="website-list">
+      <li>
+        <span class="date">Day12-06</span>
+        <a href="#" class="sitename" target="_blank">Sayyourname</a>
+      </li>
+    </ul>
   </div>
 
   <script src="lib/d3.v3.min.js"></script>
@@ -36,10 +30,10 @@
   var dataset = [];
   for (var i = 0; i < 100; i++) {
     var item = [];
-    var x = Math.floor(Math.random() * 480);
+    var x = Math.floor(Math.random() * 480); 
     var y = Math.floor(Math.random() * 120);
-    item.push(x);
-    item.push(y);
+    item.push(x); 
+    item.push(y); 
     dataset.push(item);
   }
 
@@ -49,14 +43,14 @@
   // var h = window.screen.height;
   // var h = document.body.height; // the circle are on the top
 
-  var svg = d3.select("body").append("svg").attr("width", w).attr("height", h);
+  var svg = d3.select("body").append("svg").attr("width", w).attr("height", h);  
 
   var xMax = d3.max(dataset, function(d) {
     return d[0];
   });
   var yMax = d3.max(dataset, function(d) {
     return d[1];
-  });
+  }); 
 
 
   var xScale = d3.scale.linear()
@@ -97,7 +91,7 @@
            .transition()
            .duration(6000)
            .ease("linear")
-
+        
             .attr("cx",function(d) {
               // return xScale(d[0]);
               // return xScale(d[0]) + w*Math.random();
@@ -114,7 +108,7 @@
             .attr("fill", function(d) {
               return "rgb(" + 255*Math.random() + "," + 255*Math.random() + "," + 255*Math.random() + ")";
             });
-      }, 7000)
+      }, 6000)
 
   </script>
   </body>
