@@ -11,21 +11,35 @@
   border-radius:10px;
   -ms-border-radius:10px;
   -webkit-border-radius:10px;
+  z-index: 0;
 }
 
 @media screen and (max-width: 767px) {
   .love-life {
     width: 98%;
     padding: 0 1%;
-    top: 35px;
+    top: 25px;
     left: 0;
     margin-left: 0;
   }
 }
 
+.qr {
+  width: 200px;
+  height: 300px;
+  background: url(../img/qer.png) no-repeat;
+  position: absolute;
+  background-size: 300px 370px;
+  background-position: -125px 0;
+  top: 0;
+  z-index: 1;
+}
+
 .our-color {
+  position: relative;
+  z-index: 2;
   margin: 0 auto;
-  max-width: 700px;
+  max-width: 710px;
   width: 100%;
   height: 300px;
   margin-top: 50px;
